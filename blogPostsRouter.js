@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json()
 
 const {BlogPosts} = require('./models');
+const {postTitle1, content1, author1, publishDate1} = require('./postExamples')
 
 BlogPosts.create(postTitle1, content1, author1, publishDate1);
 
@@ -33,7 +34,7 @@ router.delete('/:id', (req, res) => {
 });
 
 router.put('/:id', jsonParser, (req, res) => {
-  const requiredFields = = ['title','content','author', 'publishDate'];
+  const requiredFields = ['title','content','author', 'publishDate'];
   for (let i=0; i<requiredFields.length; i++) {
     const field = requiredFields[i];
     if (!(field in req.body)) {
